@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:text="0"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        android:id="@+id/scoreTextView"
+        android:layout_alignBaseline="@+id/titleTextView"
+        android:layout_alignBottom="@+id/titleTextView"
+        android:layout_toRightOf="@+id/titleTextView"
+        android:layout_toEndOf="@+id/titleTextView"/>
+
+    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+        android:id="@+id/actionButton"
+        android:layout_width="200dp"
+        app:backGroundColor="@color/colorAccent"
+        app:textSize="8sp"
+        app:initialNumber="0"
+        app:finalNumber="20"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="101dp"
+        android:layout_marginEnd="101dp"/>
+
+    <TextView
+        android:text="Hole 1:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="27dp"
+        android:id="@+id/titleTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+</RelativeLayout>
