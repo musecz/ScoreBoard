@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ScoreBoard</string>
+    <string name="reset_score">Clear Score</string>
 </resources>

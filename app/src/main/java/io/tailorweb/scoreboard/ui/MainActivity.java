@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 import io.tailorweb.scoreboard.R;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.Editor mEditor;
     private Data[] mDatas = new Data[18];
     private RecyclerView mRecyclerView;
+    private DataAdapter mDataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
             score = mSharedPreferences.getInt(KEY_STROKECOUNT + i, 0);
             mDatas[i] = new Data("Hole " + (i + 1) + " :", score);
         }
-        DataAdapter adapter = new DataAdapter(this, mDatas);
-        mRecyclerView.setAdapter(adapter);
+        mDataAdapter= new DataAdapter(this, mDatas);
+        mRecyclerView.setAdapter(mDataAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
@@ -47,5 +50,33 @@ public class MainActivity extends AppCompatActivity {
             mEditor.putInt(KEY_STROKECOUNT + i, mDatas[i].getCount());
         }
         mEditor.apply();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.reset_score) {
+            mEditor.clear();
+            mEditor.apply();
+            for (Data data : mDatas) {
+                data.setCount(0);
+            }
+            mDataAdapter.notifyDataSetChanged();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
