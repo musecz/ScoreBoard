@@ -53,7 +53,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            final int position = this.getAdapterPosition();
             mTitleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
             mScoreTextView = (TextView) itemView.findViewById(R.id.scoreTextView);
             mActionButton = (ElegantNumberButton) itemView.findViewById(R.id.actionButton);
@@ -61,7 +60,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    Log.d(TAG, "pos: "+ position);
                     String num = mActionButton.getNumber();;
                     mDatas[position].setCount(Integer.parseInt(num));
                     mScoreTextView.setText(num);
@@ -71,12 +69,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
         public void bindData(Data data){
             mTitleTextView.setText(data.getTitle());
-            mScoreTextView.setText(data.getCount()+"");
+            mScoreTextView.setText(data.getCount());
+            mActionButton.setNumber(data.getCount()+"");
         }
 
         @Override
         public void onClick(View view) {
-//            int position  = getAdapterPosition();
         }
     }
 
