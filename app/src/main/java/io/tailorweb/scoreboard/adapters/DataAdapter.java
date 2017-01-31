@@ -69,7 +69,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
         public void bindData(Data data){
             mTitleTextView.setText(data.getTitle());
-            mScoreTextView.setText(data.getCount());
+            mScoreTextView.setText(data.getCount()+"");
             mActionButton.setNumber(data.getCount()+"");
         }
 
